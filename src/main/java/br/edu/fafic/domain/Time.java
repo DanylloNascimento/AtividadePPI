@@ -19,11 +19,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "timeByNome", query = "select t from Time t where t.nome = :nome"),
-	@NamedQuery(name = "timeByJogador", query = "select t from Time t join t.jogadores j WHERE j.nome = :nome"),
-	@NamedQuery(name = "timeByCampeonatoByNome", query = "select t from Time t join t.campeonatos c where c.nome = :nome")
-	
+@NamedQueries({ @NamedQuery(name = "timeByNome", query = "select t from Time t where t.nome = :nome"),
+		@NamedQuery(name = "timeByJogador", query = "select t from Time t join t.jogadores j WHERE j.nome = :nome"),
+		@NamedQuery(name = "timeByCampeonatoByNome", query = "select t from Time t join t.campeonatos c where c.nome = :nome")
+
 })
 public class Time implements Serializable {
 
@@ -40,11 +39,8 @@ public class Time implements Serializable {
 	private Tecnico tecnico;
 
 	@ManyToMany(cascade = CascadeType.MERGE)
-	@JoinTable(name = "campeonato_time",
-		joinColumns = {
-			@JoinColumn(name = "campeonato_id")},
-		inverseJoinColumns = {
-				@JoinColumn(name = "times_id")})
+	@JoinTable(name = "campeonato_time", joinColumns = { @JoinColumn(name = "campeonato_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "times_id") })
 	private List<Campeonato> campeonatos;
 
 	private String nome;
@@ -63,9 +59,9 @@ public class Time implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public List<Jogador> getJogadores() {
-		if(jogadores == null) {
+		if (jogadores == null) {
 			jogadores = new ArrayList<Jogador>();
 		}
 		return jogadores;
@@ -84,7 +80,7 @@ public class Time implements Serializable {
 	}
 
 	public List<Campeonato> getCampeonatos() {
-		if(campeonatos == null) {
+		if (campeonatos == null) {
 			campeonatos = new ArrayList<Campeonato>();
 		}
 		return campeonatos;
@@ -104,10 +100,7 @@ public class Time implements Serializable {
 
 	@Override
 	public String toString() {
-		return "\n"+ 
-				"Time: " + nome + "\n" + 	
-				"TecnicoTime: " + tecnico.getNome() + "\n" + 
-				"Lista de Campeonatos: "+  campeonatos + "\n" + 
-				"Jogadores: " + jogadores + "\n";
+		return "\n" + "Time: " + nome + "\n" + "TecnicoTime: " + tecnico.getNome() + "\n" + "Lista de Campeonatos: "
+				+ campeonatos + "\n" + "Jogadores: " + jogadores + "\n";
 	}
 }

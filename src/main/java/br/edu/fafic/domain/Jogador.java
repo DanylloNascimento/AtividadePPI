@@ -18,8 +18,6 @@ import br.edu.fafic.enums.Status;
 @Entity
 @DiscriminatorColumn(name = "idPessoa")
 @NamedQueries({
-	//quando usar da erro não sei o por que 
-	
 	@NamedQuery(name = "jogadorByStatus", query = "select j from Jogador j where j.status = :status"),
 	@NamedQuery(name = "jogadorByEquipe", query = "select j from Jogador j join j.time t where t.nome = :nome")
 })

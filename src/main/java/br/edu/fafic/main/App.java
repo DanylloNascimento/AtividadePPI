@@ -54,10 +54,10 @@ public class App {
 		time2.setCampeonatos(Arrays.asList((Campeonato)persistence.findById(Campeonato.class, 1l)));
 		persistence.update(time2);
 		
-		//update de jogador para time
-		Jogador jogadotor2 = (Jogador)persistence.findById(Jogador.class, 1l);
-		jogadotor2.setTime((Time)persistence.findById(Time.class, 1l));
-		persistence.update(jogadotor2);
+		//update de jogador para timer
+		Jogador jogador2 = (Jogador)persistence.findById(Jogador.class, 1l);
+		jogador2.setTime((Time)persistence.findById(Time.class, 1l));
+		persistence.update(jogador2);
 		
 		
 		
